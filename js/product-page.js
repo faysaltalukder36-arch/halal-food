@@ -39,27 +39,72 @@ document.addEventListener("DOMContentLoaded", () => {
 
   detailBox.innerHTML = `
     <div class="product-detail-grid">
-      <div class="product-detail-image">
-        <img src="${product.image}" alt="${product.name}">
+      <div class="product-detail-image-wrap">
+        <button class="product-detail-image" type="button" aria-label="View ${product.name} image in full screen">
+          <img src="${product.image}" alt="${product.name}">
+          <span class="image-zoom-hint">Click image to enlarge</span>
+        </button>
       </div>
+
       <div class="product-detail-info">
         <span class="tag">${product.category}</span>
         <h1>${product.name}</h1>
         <p class="product-detail-price">${product.price}</p>
+
         <div class="product-detail-actions">
           <a class="btn-primary" href="${orderUrl}">Order Now</a>
           <a class="btn-secondary" href="${whatsappUrl}" target="_blank" rel="noopener">Message Us</a>
           <a class="btn-secondary" href="tel:+8801842031164">Call Us</a>
         </div>
-        <div class="product-detail-description">
-          <h2>Description</h2>
-          <!-- Replace the placeholder full description below with the real product details later. -->
-          <p>${product.fullDescription}</p>
-          <p>This is placeholder product-detail content. Replace it later with your real product information while keeping the product name, price, and image filename unchanged.</p>
+
+        <div class="product-short-note">
+          <strong>Product:</strong> ${product.name}<br>
+          <strong>Category:</strong> ${product.category}
         </div>
       </div>
     </div>
+
+    <section class="product-description-section" aria-labelledby="product-description-title">
+      <div class="product-description-inner">
+        <span class="section-eyebrow">Product Details</span>
+        <h2 id="product-description-title">Description</h2>
+        <p>${product.fullDescription}</p>
+      </div>
+    </section>
   `;
+
+  // Full-screen product image viewer: dark backdrop + image only.
+  const imageButton = detailBox.querySelector(".product-detail-image");
+  if (imageButton) {
+    imageButton.addEventListener("click", () => {
+      const modal = document.createElement("div");
+      modal.className = "product-image-modal";
+      modal.setAttribute("role", "dialog");
+      modal.setAttribute("aria-modal", "true");
+      modal.setAttribute("aria-label", `${product.name} image viewer`);
+      modal.innerHTML = `
+        <button class="product-image-modal-close" type="button" aria-label="Close image viewer">&times;</button>
+        <img src="${product.image}" alt="${product.name}">
+      `;
+      document.body.appendChild(modal);
+      document.body.classList.add("image-modal-open");
+
+      const closeModal = () => {
+        modal.remove();
+        document.body.classList.remove("image-modal-open");
+        document.removeEventListener("keydown", onKeyDown);
+      };
+      const onKeyDown = (event) => {
+        if (event.key === "Escape") closeModal();
+      };
+
+      modal.addEventListener("click", (event) => {
+        if (event.target === modal) closeModal();
+      });
+      modal.querySelector(".product-image-modal-close").addEventListener("click", closeModal);
+      document.addEventListener("keydown", onKeyDown);
+    });
+  }
 
   const related = PRODUCTS_DATA
     .filter((item) => item.categorySlug === product.categorySlug && item.slug !== product.slug)
