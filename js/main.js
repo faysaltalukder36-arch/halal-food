@@ -1,6 +1,6 @@
 
 // Google Apps Script Web App URL: paste your deployed URL between the quotes.
-const GOOGLE_APPS_SCRIPT_URL = "PASTE_YOUR_APPS_SCRIPT_URL_HERE";
+const GOOGLE_APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxRSL_vllPXEwa61UMiza9WbvLZ7U6FQvgMcwuy4t72xml3qChRA_G_EynAyA0_sW4x4Q/exec";
 
 function whatsappLink(productName = "") {
   const message = productName
