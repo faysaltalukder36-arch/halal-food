@@ -115,7 +115,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (related.length && relatedSection && relatedGrid) {
     relatedGrid.innerHTML = related.map((item) => {
-      const url = `product.html?slug=${encodeURIComponent(item.slug)}`;
+      const url = `products/${encodeURIComponent(item.slug)}.html`;
       const order = `order.html?product=${encodeURIComponent(item.name)}`;
       return `
         <article class="product-card">
