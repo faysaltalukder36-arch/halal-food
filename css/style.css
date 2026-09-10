@@ -236,7 +236,7 @@ footer a:hover { color:var(--cream); }
   margin: 0 auto;
   padding: 0;
   border: 1px solid var(--line);
-  background: var(--white);
+  background: var(--cream);
   overflow: hidden;
   cursor: zoom-in;
   appearance: none;
@@ -245,9 +245,9 @@ footer a:hover { color:var(--cream); }
 .product-detail-image img {
   display: block;
   width: 100%;
-  aspect-ratio: 1 / 1;
-  object-fit: contain;
-  background: var(--white);
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  background: var(--cream);
 }
 .image-zoom-hint {
   position: absolute;
@@ -358,7 +358,7 @@ body.image-modal-open { overflow: hidden; }
 
 @media (max-width: 600px) {
   .product-detail { padding-top: 8px; }
-  .product-detail-image img { aspect-ratio: 1 / 1; }
+  .product-detail-image img { aspect-ratio: 4 / 3; }
   .product-detail-info h1 { font-size: 2.15rem; }
   .product-detail-actions { flex-direction: column; align-items: stretch; }
   .product-detail-actions a { width: 100%; }
