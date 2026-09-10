@@ -68,3 +68,14 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+// Site favicon
+(function () {
+  const favicon = document.createElement("link");
+  favicon.rel = "icon";
+  favicon.type = "image/png";
+
+  const siteRoot = "/halal-food/";
+  favicon.href = siteRoot + "images/favicon.png";
+
+  document.head.appendChild(favicon);
+})();
