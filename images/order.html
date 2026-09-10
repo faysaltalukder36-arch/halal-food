@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Place an Order — Halal Food</title><meta name="description" content="Place a simple Halal Food order.">
+<link rel="stylesheet" href="css/style.css"></head><body>
+
+<header>
+  <div class="wrap nav">
+    <a href="index.html" class="brand">Halal Food <span>হালাল ফুড</span></a>
+    <nav class="nav-links">
+      <a href="index.html#categories">Categories</a>
+      <a href="index.html#products">Products</a>
+      <a href="index.html#how-to-order">How to Order</a>
+      <a href="index.html#contact">Contact</a>
+      <a href="docs/price-list.pdf" download>Price List</a>
+    </nav>
+    <div class="header-actions">
+      <div class="search-wrap">
+        <button class="search-toggle" aria-label="Search products">⌕</button>
+        <div class="search-box">
+          <input id="product-search" type="search" placeholder="Search products..." autocomplete="off">
+          <ul id="search-results" class="search-results"></ul>
+        </div>
+      </div>
+      <a href="#" data-whatsapp class="call-btn">Contact Us</a>
+    </div>
+  </div>
+</header>
+
+<main class="section"><div class="wrap order-page">
+<div class="section-head"><p class="section-eyebrow">Halal Food</p><h1>Place Your Order</h1><p>Fill in the details below. We will confirm your order and delivery information.</p></div>
+<div class="form-card">
+<form id="order-form">
+<div class="form-group"><label for="product">Product Name *</label><input id="product" name="product" type="text" required></div>
+<div class="form-group"><label for="name">Full Name *</label><input id="name" name="name" type="text" required></div>
+<div class="form-group"><label for="mobile">Mobile Number *</label><input id="mobile" name="mobile" type="tel" required></div>
+<div class="form-group"><label for="address">Full Address *</label><textarea id="address" name="address" required></textarea></div>
+<div class="form-group"><label for="quantity">Quantity</label><input id="quantity" name="quantity" type="text" placeholder="e.g. 1 kg"></div>
+<div class="form-group"><label for="notes">Notes (optional)</label><textarea id="notes" name="notes" placeholder="Any additional information"></textarea></div>
+<button type="submit" class="btn-primary">Submit Order</button>
+<div id="form-success" class="form-success">ধন্যবাদ! আপনার অর্ডারটি গ্রহণ করা হয়েছে। শীঘ্রই যোগাযোগ করা হবে।</div>
+<div id="form-error" class="form-error"></div>
+</form>
+<div class="direct-contact"><p>সরাসরি কথা বলতে চাইলে</p><a href="#" data-whatsapp class="order-btn" style="margin-top:10px;">যোগাযোগ করুন</a></div>
+</div></div></main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a href="index.html" class="brand">Halal Food <span>হালাল ফুড</span></a>
+        <p>An online halal food store bringing fresh meat, groceries, and pantry essentials to your door.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="index.html#categories">Categories</a></li>
+          <li><a href="index.html#products">Products</a></li>
+          <li><a href="index.html#how-to-order">How to Order</a></li>
+          <li><a href="docs/price-list.pdf" download>Price List</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li>01842-031164</li>
+          <li><a href="#" data-whatsapp>যোগাযোগ করুন</a></li>
+          <li>Daily, 9am – 9pm</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Halal Food. All rights reserved.</span>
+      <span>Made with care for halal living.</span>
+    </div>
+  </div>
+</footer>
+<a href="#" data-whatsapp class="float-contact">যোগাযোগ করুন — 01842-031164</a>
+
+<script src="js/main.js"></script><script src="js/products-index.js"></script>
+</body></html>
