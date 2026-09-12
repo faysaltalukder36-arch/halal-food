@@ -140,23 +140,42 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelector("[data-category-prev]")?.addEventListener("click", () => categoryRail.scrollBy({ left: -step(), behavior: "smooth" }));
     document.querySelector("[data-category-next]")?.addEventListener("click", () => categoryRail.scrollBy({ left: step(), behavior: "smooth" }));
 
-    let dragging = false;
+        let dragging = false;
+    let dragMoved = false;
     let dragStartX = 0;
     let dragStartScroll = 0;
+    const DRAG_THRESHOLD = 6; // px
+
     categoryRail.addEventListener("pointerdown", (event) => {
       if (event.pointerType !== "mouse") return;
       dragging = true;
+      dragMoved = false;
       dragStartX = event.clientX;
       dragStartScroll = categoryRail.scrollLeft;
-      categoryRail.setPointerCapture?.(event.pointerId);
     });
+
     categoryRail.addEventListener("pointermove", (event) => {
       if (!dragging) return;
-      categoryRail.scrollLeft = dragStartScroll - (event.clientX - dragStartX);
+      const delta = event.clientX - dragStartX;
+      if (!dragMoved && Math.abs(delta) > DRAG_THRESHOLD) {
+        dragMoved = true;
+        categoryRail.setPointerCapture?.(event.pointerId);
+      }
+      if (dragMoved) {
+        categoryRail.scrollLeft = dragStartScroll - delta;
+      }
     });
-    ["pointerup","pointercancel","lostpointercapture"].forEach((type) => {
+
+    ["pointerup", "pointercancel", "lostpointercapture"].forEach((type) => {
       categoryRail.addEventListener(type, () => { dragging = false; });
     });
+
+    categoryRail.addEventListener("click", (event) => {
+      if (dragMoved) {
+        event.preventDefault();
+        dragMoved = false;
+      }
+    }, true);
   }
 
   // Order form
