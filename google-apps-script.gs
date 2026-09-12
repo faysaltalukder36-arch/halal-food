@@ -18,7 +18,7 @@ function doPost(e) {
     || SpreadsheetApp.getActiveSpreadsheet().insertSheet(SHEET_NAME);
 
   if (sheet.getLastRow() === 0) {
-    sheet.appendRow(["Timestamp","Product","Name","Mobile","Address","Quantity","Notes"]);
+    sheet.appendRow(["Timestamp","Product","Name","Mobile","Address","District","Upazila","Quantity","Notes"]);
   }
 
   let data = {};
@@ -34,6 +34,8 @@ function doPost(e) {
     data.name || "",
     data.mobile || "",
     data.address || "",
+    data.district || "",
+    data.upazila || "",
     data.quantity || "",
     data.notes || ""
   ]);
